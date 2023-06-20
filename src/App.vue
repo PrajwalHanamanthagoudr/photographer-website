@@ -1,30 +1,27 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <v-app>
+    <v-main>
+      <v-overlay :model-value="overlay" class="align-center justify-center">
+          <v-progress-circular color="black" indeterminate size="64"></v-progress-circular>
+        </v-overlay>
+      <router-view/>
+      <modal-page />
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import ModalPage from './components/ModalPage.vue';
+export default {
+    name: "App",
+    data: () => ({
+        overlay: true,
+    }),
+    mounted() {
+        setTimeout(() => {
+            this.overlay = false;
+        }, 2000);
+    },
+    components: { ModalPage }
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
