@@ -141,12 +141,8 @@ import { defineComponent } from 'vue';
 import NavigationMenu from '@/components/NavigationMenu.vue';
 import LocationPage from '@/components/LocationPage.vue'
 import FooterPage from '@/components/FooterPage.vue';
-import axios from 'axios';
 
 export default defineComponent({
-  created() {
-    this.axios = axios.create();
-  },
   name: 'HomeView',
   components: {
     NavigationMenu,
